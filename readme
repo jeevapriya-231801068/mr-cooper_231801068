@@ -1,2 +1,114 @@
-THE SYSTEM WORKS IN THE FLOW OF CUSTOMER INITIATES AND RIDE BOOKING THEN CUSTOMER ACCEPT THE RIDE THEN THEY WOULD COMPLETE THE TRIP IS COMPLETED 
-THIS WORKFLOW INCLUDE STRATEGY WORKFLOW FOR FARE ENGINE AND WORKS APPLIES THE ENCAPSULATION , INHERITANCE AND POLYMORPHISM AND HANDLES EDGE cases 
+# 🚗 Mr. Cooper — Ride Hailing System
+
+A Python-based ride-hailing application simulating core features of a cab booking platform. The system handles customer ride requests, driver matching, fare calculation, trip management, and ratings.
+
+---
+
+## 📁 Project Structure
+
+```
+Mr_cooper/
+├── main.py          # Entry point — orchestrates the full ride flow
+├── Customer.py      # Customer class with ride request and payment methods
+├── driver.py        # Driver class with online/offline and trip management
+├── matching.py      # Nearest driver matching algorithm
+├── trip.py          # Trip lifecycle management
+├── fareengine.py    # Strategy pattern-based fare calculation engine
+├── rating.py        # Rating and feedback system
+└── README.md
+```
+
+---
+
+## 🔄 System Workflow
+
+```
+Customer enters pickup & drop location
+        ↓
+System finds nearest available driver (matching.py)
+        ↓
+Trip is created and started (trip.py)
+        ↓
+Customer can cancel or continue the ride
+        ↓
+Fare is calculated based on ride type & conditions (fareengine.py)
+        ↓
+Payment is processed using saved payment method
+        ↓
+Customer rates the driver (rating.py)
+```
+
+---
+
+## ⚙️ Features
+
+- **Driver Matching** — Finds the nearest available driver within a search radius, expanding the search if none are found nearby
+- **Fare Engine** — Strategy pattern implementation supporting Economy, Premium, and No-Surge fare types
+- **Surge Pricing** — Automatically applies 2x or 3x multipliers during peak hours or bad weather
+- **Trip Management** — Full trip lifecycle: start, cancel, complete
+- **Cancellation Fee** — Charges a fee if the customer cancels after the driver has arrived (within 5 minutes)
+- **Rating System** — Customers can rate drivers after each trip; average ratings are tracked per driver
+- **Payment Methods** — Customers can add or remove saved payment methods
+
+---
+
+## 🧠 OOP Concepts Used
+
+| Concept | Where Applied |
+|---|---|
+| **Encapsulation** | `CustomerPhase`, `Driver_phase`, `TripDetails` — data and methods bundled in classes |
+| **Inheritance** | `EconomyFare`, `PremiumFare`, `NoSurgeFare` inherit from abstract `FareStrategy` |
+| **Polymorphism** | `calculate()` method behaves differently for each fare strategy |
+| **Abstraction** | `FareStrategy` abstract base class defines the interface for all fare types |
+
+---
+
+## 💰 Fare Calculation
+
+| Type | Base Fare | Per KM | Per Minute |
+|---|---|---|---|
+| Economy | ₹30 | ₹12 | ₹2 |
+| Premium | ₹50 | ₹18 | ₹3 |
+
+- First 2 km are free
+- Minimum fare: ₹60
+- Peak hour surge: **2x**
+- Bad weather surge: **2x**
+- Both conditions: **3x**
+
+---
+
+## ▶️ How to Run
+
+```bash
+python main.py
+```
+
+You will be prompted to enter:
+1. Pickup coordinates (latitude & longitude)
+2. Drop coordinates (latitude & longitude)
+3. Ride type (`sedan` or `premium`)
+4. Whether to cancel or continue the ride
+5. Rating (1–5) and feedback after the trip
+
+---
+
+## 📌 Sample Input
+
+```
+Enter pickup latitude: 40.7
+Enter pickup longitude: -74.0
+Enter drop latitude: 40.75
+Enter drop longitude: -74.05
+Enter ride type (sedan/premium): sedan
+Do you want to cancel this ride? (yes/no): no
+Enter rating (1-5): 5
+Enter your feedback: Great ride!
+```
+
+---
+
+## 🛠️ Requirements
+
+- Python 3.x
+- No external libraries required (uses only built-in `math` and `abc` modules)
