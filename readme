@@ -1,10 +1,10 @@
-# 🚗 Mr. Cooper — Ride Hailing System
+# Mr. Cooper — Ride booking System
 
 A Python-based ride-hailing application simulating core features of a cab booking platform. The system handles customer ride requests, driver matching, fare calculation, trip management, and ratings.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Mr_cooper/
@@ -20,7 +20,7 @@ Mr_cooper/
 
 ---
 
-## 🔄 System Workflow
+##  System Workflow
 
 ```
 Customer enters pickup & drop location
@@ -52,7 +52,7 @@ Customer rates the driver (rating.py)
 
 ---
 
-## 🧠 OOP Concepts Used
+## OOP Concepts Used
 
 | Concept | Where Applied |
 |---|---|
@@ -63,7 +63,7 @@ Customer rates the driver (rating.py)
 
 ---
 
-## 💰 Fare Calculation
+##  Fare Calculation
 
 | Type | Base Fare | Per KM | Per Minute |
 |---|---|---|---|
@@ -93,7 +93,7 @@ You will be prompted to enter:
 
 ---
 
-## 📌 Sample Input
+##  Sample Input
 
 ```
 Enter pickup latitude: 40.7
@@ -108,7 +108,7 @@ Enter your feedback: Great ride!
 
 ---
 
-## 🛠️ Requirements
+##  Requirements
 
 - Python 3.x
 - No external libraries required (uses only built-in `math` and `abc` modules)
